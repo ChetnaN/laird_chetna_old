@@ -1,0 +1,90 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+@font-face{
+    src: url('../fonts/Calibri.otf');
+    font-family: "calibri";
+}
+@font-face{
+    src: url('../fonts/Calibri-Bold.otf');
+    font-family: "calibribold";
+}
+.logo {
+float: left;
+background: #fff url(../img/icon-curve01.gif) no-repeat top right;
+padding: 17px 33px 0 8px;
+top: 0;
+left: 0;
+}
+#block-block-3{
+height: 46px;
+float: right;
+background: #f1f1f4 url(../img/icon-curve02.gif) no-repeat top left;
+padding: 0 10px 0 50px;
+}
+
+#block-block-3 a {
+color: #10103f;
+text-decoration: none;
+}
+
+#block-block-3 a span {
+color: #dd6c26;
+text-decoration: underline ;
+}
+
+#block-follow-site a{
+    text-align: right;
+    float: right;
+}
+.navbar-default {
+    font-size: 10px;
+    background: #FFFFFF;
+    font-family: "calibri";
+    border-top: 1px solid #10103f;
+    border-bottom: 5px solid #49afe3;
+}
+
+.navbar-default .navbar-nav>a
+{
+    color: #7e8083;
+    font-family: "calibri";
+    font-size: 10px;
+}
+
+.navbar-default .navbar-nav>.active>a
+{
+    color: #49afe3;
+    font-family: "calibribold";
+    font-size: 10px;
+    background: url(../img/icon-arrow01.png) no-repeat bottom center;
+    position: relative;
+}
+
+/********** Footer **********/
+.footer{
+    width:100%;
+    font-size: 14px;
+    color: #333333;
+    line-height: 20px;
+    border-top: 10px solid #49afe3;
+}
+
+.footer .nav>li>a {
+    float:left;
+    position: relative;
+    color: #0f1040;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    display: inline-block;
+    background: url(../img/icon-divider04.gif) no-repeat left center;
+    padding: 1px 8px 0 8px;
+    margin: 0;
+}
+
+footer .footer-links li:first {
+background: none;
+padding-left: 0;
+}
