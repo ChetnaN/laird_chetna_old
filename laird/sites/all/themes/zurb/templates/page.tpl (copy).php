@@ -16,16 +16,42 @@
             <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
           </ul>
           <section class="top-bar-section">
-             <?php
-                //print out block 26
+         <?php
+//print out block 26
               $block = module_invoke('follow', 'block_view', 0);
-                print "Follow Us     ";
+              //print "<div class='txt'>";
+                print "Follow us";
+             // print "</div>";
               print render($block['content']);
               //dpm($block); //uncomment to view with devel enabled
-            ?>
-
+?>
+            <?php
+//print out block 26
+              //$block = module_invoke('block_3', 'block_view', 0);
+              //print render($block['content']);
+             //dpm($block); //uncomment to view with devel enabled
+?>
+<div class="links-right">
+              <ul>
+			    <!--
+                <li>
+					<a href="/user" class="">
+						My Account
+					</a>
+				</li>
+				-->
+                <li>
+					<a href="/investors/share-price-information">
+						Share Price 
+						<span>
+							294.60p
+						</span>
+					</a>
+				</li>
+              </ul>
+            </div>
             <?php if ($top_bar_main_menu) :?>
-              <?php print $top_bar_main_menu; ?>
+              <?php //print $top_bar_main_menu; ?>
             <?php endif; ?>
             <?php if ($top_bar_secondary_menu) :?>
               <?php //print $top_bar_secondary_menu; ?>

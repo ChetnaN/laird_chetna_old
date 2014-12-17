@@ -5536,6 +5536,15 @@ overflow: visible;
 position: relative;
 height: 46px;
 }
+.top-bar-section {
+text-align: right;
+height: 46px;
+font-size: 14px;
+color: #49afe3;
+font-family: "calibribold", Arial, Helvetica, sans-serif;
+line-height: 44px;
+padding: 3px 18px 0 0;
+}
 .top-bar-section ul {
 /*background: #fff;*/
 }
@@ -5549,5 +5558,91 @@ left: 0;
 }
 /* Follow Links */
 .follow-link-wrapper {
+width: 30px;
+height: 30px;
 float: left;
+margin-left: 4px;
+font-size: 20px;
+color: #10103f;
+text-align: center;
+line-height: 32px;
+background: #FFFFFF;
+border-radius: 60px;
+behavior: url(PIE.htc);
+position: relative;
+}
+.follow-links {
+display: block;
+float: right;
+margin: 8px -10px 0 0;
+}
+a.follow-link {
+  background-image: url(../img/social-icons.png) !important;
+-webkit-transition: none;
+-moz-transition: none;
+-o-transition: none;
+transition: none;
+}
+a.follow-link {
+background-image: url(http://cdn.lairdtech.com/sites/all/themes/LairdTech/img/social-icons.png) !important;
+background-position: 0px -1px;
+}
+a.follow-link:hover {
+background-image: url(http://cdn.lairdtech.com/sites/all/themes/LairdTech/img/social-icons.png) !important;
+background-position: 0px -32px;
+}
+a.follow-link-twitter {
+background-position: -34px -1px;
+}
+a.follow-link-twitter:hover {
+background-position: -34px -32px;
+}
+a.follow-link-googleplus {
+background-position: -68px -1px;
+}
+a.follow-link-googleplus:hover {
+background-position: -68px -32px;
+}
+a.follow-link-linkedin {
+background-position: -102px -1px;
+}
+a.follow-link-linkedin:hover {
+background-position: -102px -32px;
+}
+a.follow-link-youtube {
+background-position: -137px -1px;
+}
+a.follow-link-youtube:hover {
+background-position: -137px -32px;
+}
+a.follow-link-this-site {
+background-position: -170px -1px;
+}
+a.follow-link-this-site:hover {
+background-position: -170px -32px;
+}
+/* Share Price */
+.links-right {
+height: 46px;
+float: right;
+background: #f1f1f4 url(../img/icon-curve02.gif) no-repeat top left;
+padding: 0 10px 0 50px;
+top: 0;
+right: 0;
+position: absolute;
+}
+.top-bar-section li:not(.has-form) a:not(.button) {
+background: #f1f1f4;
+color: #10103f;
+font-size: 16px;
+font-family: "calibribold", Arial, Helvetica, sans-serif;
+line-height: 46px;
+}
+.links-right ul li:first-child {
+background: #f1f1f4;
+padding-left: 0;
+}
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+color: #10103f;
+background: #f1f1f4;
 }
