@@ -5483,7 +5483,14 @@ background: -webkit-gradient(linear, left top, left bottom, from(#d7d7d9), to(#f
 background: -o-linear-gradient(#d7d7d9, #f1f1f4) !important;
 }
 #sliding-popup button.find-more-button {
-visibility: hidden;
+position: relative;
+top: 0px;
+right: -146px;
+background: url(../img/icon-close01.png) no-repeat 0px 0px !important;
+text-indent: -99999px;
+height: 13px !important;
+width: 13px !important;
+-webkit-box-shadow: none !important;
 }
 #sliding-popup .popup-content #popup-text {
 max-width: 80%;
@@ -5516,6 +5523,12 @@ box-shadow: none;
 margin: 0;
 filter: none !important;
 }
+#sliding-popup .popup-content #popup-buttons button:hover {
+background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #10103F), color-stop(1, #10103F) );
+background: -moz-linear-gradient( center top, #10103F 5%, #10103F 100% );
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#10103F', endColorstr='#10103F');
+background-color: #10103F;
+}
 /* Logo */
 .top-bar {
 background: #10103F !important;
@@ -5523,12 +5536,12 @@ overflow: visible;
 position: relative;
 height: 46px;
 }
-}
 .top-bar-section ul {
 /*background: #fff;*/
 }
 .logo {
 float: left;
+position: relative;
 background: #fff url(../img/icon-curve01.gif) no-repeat top right;
 padding: 17px 33px 0 8px;
 top: 0;

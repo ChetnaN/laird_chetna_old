@@ -85,10 +85,12 @@
     var agreed_enabled = Drupal.settings.eu_cookie_compliance.popup_agreed_enabled;
     $('.find-more-button').click(function(){
       if (Drupal.settings.eu_cookie_compliance.popup_link_new_window) {
-        window.open(Drupal.settings.eu_cookie_compliance.popup_link);
+        //window.open(Drupal.settings.eu_cookie_compliance.popup_link);
+	  $("#sliding-popup").remove();
       }
       else{
-        window.location.href = Drupal.settings.eu_cookie_compliance.popup_link;
+        //window.location.href = Drupal.settings.eu_cookie_compliance.popup_link;
+	  $("#sliding-popup").remove();
       }
     });
     $('.agree-button').click(function(){
