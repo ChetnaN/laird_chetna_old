@@ -17,16 +17,22 @@
           </ul>
           <section class="top-bar-section">
              <?php
-                //print out block 26
               $block = module_invoke('follow', 'block_view', 0);
-                print "Follow Us     ";
+              print "Follow Us     ";
               print render($block['content']);
-              //dpm($block); //uncomment to view with devel enabled
             ?>
-
-            <?php if ($top_bar_main_menu) :?>
+<div class="row">
+  <div class="small-6 large-2 columns" style="visibility: hidden;"> .</div>
+  <div class="small-6 large-8 columns"><?php if ($top_bar_main_menu) :?>
               <?php print $top_bar_main_menu; ?>
-            <?php endif; ?>
+            <?php endif; ?></div>
+  <div class="small-12 large-2 columns"><?php
+              $block = module_invoke('search', 'block_view', 'search');
+              print render($block); 
+            ?></div>
+</div>
+            
+            
             <?php if ($top_bar_secondary_menu) :?>
               <?php //print $top_bar_secondary_menu; ?>
             <?php endif; ?>
@@ -218,6 +224,12 @@
         <?php print render($page['footer']); ?>
       </div>
     <?php endif; ?>
+      <?php
+//$block =block_load('block',3);
+//$output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+//print $output;
+              //dpm($block); //uncomment to view with devel enabled
+            ?>
 
     <?php if ($site_name) :?>
       <div class="copyright large-12 columns">
