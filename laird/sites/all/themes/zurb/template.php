@@ -1,5 +1,76 @@
 <?php
+/*function zurb_menu_tree($variables) {
+ dpm($variables);
+ return '<ul class="menu">' . $variables['tree'] . '</ul>';
+}
+function zurb_menu_tree__user_menu($variables) {
+ dpm($variables);
+ dpm('mymenu');
+ return '<ul class="menu">' . $variables['tree'] . '</ul>';
+}
+*/
+/**
+ * Implements theme_links() targeting the main menu specifically.
+ * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
+ */
+function zurb_links__topbar_main_menu($variables) {
+  // We need to fetch the links ourselves because we need the entire tree.
+  $links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
+  $output = _zurb_foundation_links($links);
+  $variables['attributes']['class'][] = 'left';
+  $variables['attributes']['class'][] = 'dropbox';
 
+  return '<ul' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
+}
+/*
+ */
+/*$variables['attributes']['class'][]- = 'dropbox';
+//dpm($links);
+ $level=0;
+//var_dump($links);
+//var_dump($output);
+if (!empty($link['#below']))
+{
+    $level = $level+1;
+}
+switch ($level){
+	case 1:?>
+		<ul class="nav-primary"><?= $links ?></ul><? 
+		break;
+	case 2:
+		$class='nav-submenu';
+		if ($parentLink['in_active_trail'])
+    		    $class .= ' active-trail';?>
+                <ul class="<?=$class ?>"><?=$links?></ul><?
+                break;
+}
+function recursive_menu($menu_links)
+{
+$output = '';
+$sub_menu = '';
+
+
+foreach ($menu_links as $key => $link) {
+if (!empty($link['#href'])) {
+$classes = 'class="'.(!empty($link['#below']) ? $link['#attributes']['class'][] = 'has-dropdown' : '').'"';
+$output .= '<li ' . $classes . '>' . l($link['#title'], $link['#href']);
+
+dpm($output);
+if (!empty($link['#below']))
+{
+$output .= !empty($link['#below']) ? '<ul class="dropdown-bg dropdown" style="color:red;">' . recursive_menu($link['#below']) . '</ul>' : '';
+}
+
+
+$output .= '</li>';
+}
+}
+
+
+unset($sub_menu);
+$sub_menu = '';
+return $output;
+}*/
 /**
  * Implements template_preprocess_html().
  *
@@ -200,3 +271,37 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 //    }
 //  }
 //}
+
+/**
+ * Returns HTML for a menu link and submenu.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - element: Structured array data for a menu link.
+ *1
+ * @ingroup themeable
+ */
+
+
+/*function zurb_menu_tree__menu_main_menu_second($variables) {
+  return '<div class="article-list"><ul>' . $variables['tree'] . '</ul></div>';
+}
+
+function zurb_menu_link__menu_main_menu($variables) {
+  $element = $variables['element'];
+
+  $submenu = '';
+  if ($element['#below']) {
+    // You can set a theme wrapper here or put an empty array() only
+    // and theme the second level directly by adding <ul></ul> one line below.
+    $element['#below']['#theme_wrappers'] = array('menu_tree__menu_main_menu_second');
+    $submenu = drupal_render($element['#below']);
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $submenu . "</li>\n";
+}   */
+function zurb_menu_block_tree_alter(&$tree, &$config){
+    
+    
+}
