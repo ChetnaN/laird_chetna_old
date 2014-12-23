@@ -18,59 +18,79 @@ function zurb_links__topbar_main_menu($variables) {
   $links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
   $output = _zurb_foundation_links($links);
   $variables['attributes']['class'][] = 'left';
-  $variables['attributes']['class'][] = 'dropbox';
 
   return '<ul' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
 }
-/*
+/**
+ * Helper function to recursively render sub-menus.
+ *
+ * @param array
+ *   An array of menu links.
+ *
+ * @return string
+ *   A rendered list of links, with no <ul> or <ol> wrapper.
+ *
+ * @see _zurb_foundation_links()
  */
-/*$variables['attributes']['class'][]- = 'dropbox';
-//dpm($links);
- $level=0;
-//var_dump($links);
-//var_dump($output);
-if (!empty($link['#below']))
-{
-    $level = $level+1;
+function _zurb_render_link($link) {
+  $output = '';
+
+  // This is a duplicate link that won't get the dropdown class and will only
+  // show up in small-screen.
+  $small_link = $link;
+  //
+  //if (!empty($link['#below'])) {
+  //  $link['#attributes']['class'][] = 'has-dropdown';
+  //}
+  //
+  //// Render top level and make sure we have an actual link.
+  //if (!empty($link['#href'])) {
+  //  $rendered_link = NULL;
+  //
+  //  // Foundation offers some of the same functionality as Special Menu Items;
+  //  // ie: Dividers and Labels in the top bar. So let's make sure that we
+  //  // render them the Foundation way.
+  //  if (module_exists('special_menu_items')) {
+  //    if ($link['#href'] === '<nolink>') {
+  //      $rendered_link = '<label>' . $link['#title'] . '</label>';
+  //    }
+  //    else if ($link['#href'] === '<separator>') {
+  //      $link['#attributes']['class'][] = 'divider';
+  //      $rendered_link = '';
+  //    }
+  //  }
+  //
+  //  if (!isset($rendered_link)) {
+  //    $rendered_link = theme('zurb_foundation_menu_link', array('link' => $link));
+  //  }
+  //
+  //  // Test for localization options and apply them if they exist.
+  //  if (isset($link['#localized_options']['attributes']) && is_array($link['#localized_options']['attributes'])) {
+  //    $link['#attributes'] = array_merge_recursive($link['#attributes'], $link['#localized_options']['attributes']);
+  //  }
+  //  $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link;
+
+    if (!empty($link['#below'])) {
+      // Add repeated link under the dropdown for small-screen.
+      $small_link['#attributes']['class'][] = 'show-for-small';
+      $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
+
+      // Build sub nav recursively.
+      foreach ($link['#below'] as $sub_link) {
+        if (!empty($sub_link['#href'])) {
+          $sub_menu .= _zurb_foundation_render_link($sub_link);
+        }
+      }
+
+      $output .= '<div class="dropdown-bg"><ul class="dropdown">' . $sub_menu . '</ul></div>';
+    }
+
+    $output .=  '</li>';
+
+
+  return $output;
 }
-switch ($level){
-	case 1:?>
-		<ul class="nav-primary"><?= $links ?></ul><? 
-		break;
-	case 2:
-		$class='nav-submenu';
-		if ($parentLink['in_active_trail'])
-    		    $class .= ' active-trail';?>
-                <ul class="<?=$class ?>"><?=$links?></ul><?
-                break;
-}
-function recursive_menu($menu_links)
-{
-$output = '';
-$sub_menu = '';
 
-
-foreach ($menu_links as $key => $link) {
-if (!empty($link['#href'])) {
-$classes = 'class="'.(!empty($link['#below']) ? $link['#attributes']['class'][] = 'has-dropdown' : '').'"';
-$output .= '<li ' . $classes . '>' . l($link['#title'], $link['#href']);
-
-dpm($output);
-if (!empty($link['#below']))
-{
-$output .= !empty($link['#below']) ? '<ul class="dropdown-bg dropdown" style="color:red;">' . recursive_menu($link['#below']) . '</ul>' : '';
-}
-
-
-$output .= '</li>';
-}
-}
-
-
-unset($sub_menu);
-$sub_menu = '';
-return $output;
-}*/
 /**
  * Implements template_preprocess_html().
  *
